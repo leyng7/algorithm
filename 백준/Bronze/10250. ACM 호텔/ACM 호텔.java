@@ -16,8 +16,15 @@ public class Main {
             int width = Integer.parseInt(st.nextToken());
             int number = Integer.parseInt(st.nextToken());
 
-            String roomNumber = getRoomNumber(width, height, number);
-            bw.write(roomNumber);
+            int floor = number % height;
+            int room = number / height + 1;
+
+            if (floor == 0) {
+                room--;
+                floor = height;
+            }
+
+            bw.write(String.valueOf(floor * 100 + room));
             bw.newLine();
         }
 
@@ -25,18 +32,6 @@ public class Main {
         bw.close();
 
     }
-
-    private static String getRoomNumber(int width, int height, int number) {
-        int result = 1;
-        for (int w = 1; w <= width; w++) {
-            for (int h = 1; h <= height; h++) {
-                if (result == number) {
-                    return h + String.format("%02d", w);
-                }
-                result++;
-            }
-        }
-        return null;
-    }
-
 }
+
+
