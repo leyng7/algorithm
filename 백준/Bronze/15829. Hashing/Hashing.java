@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigInteger;
 
 public class Main {
 
@@ -11,13 +12,14 @@ public class Main {
         int size = Integer.parseInt(br.readLine());
         String words = br.readLine();
 
-        int sum = 0;
+        BigInteger sum = new BigInteger("0");
         for (int i = 0; i < size; i++) {
-            int position = words.charAt(i) - 96;
-            sum += (position * (int) Math.pow(31, i));
+            BigInteger position = BigInteger.valueOf(words.charAt(i) - 96);
+            BigInteger term = position.multiply(BigInteger.valueOf(31).pow(i));
+            sum = sum.add(term);
         }
 
-        System.out.println(sum);
+        System.out.println(sum.remainder(new BigInteger("1234567891")));
         br.close();
     }
 
