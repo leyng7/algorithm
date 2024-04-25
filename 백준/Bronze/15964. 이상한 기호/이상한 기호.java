@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Main {
@@ -7,9 +8,9 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        int a = sc.nextInt();
-        int b = sc.nextInt();
+        BigInteger a = sc.nextBigInteger();
+        BigInteger b = sc.nextBigInteger();
 
-        System.out.println((a+b)*(a-b));
+        System.out.println((a.add(b)).multiply(a.subtract(b)));
     }
 }
